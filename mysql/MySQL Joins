@@ -1,0 +1,69 @@
+(ID and Foreign Key)
+one-to-one (One datum to one datum e.g. one book and one author)
+one-to-many (one datum to many data e.g. one author to many books)
+many-to-many (data to data)
+
+left, right, full, outer joins, inner(implicit), cross joins
+
+CROSS JOIN => SELECT * FROM A CROSS JOIN B/ SELECT * FROM A,B
+
+LEFT (OUTER) JOIN => SELECT FROM table1 AS A LEFT JOIN table2 AS B ON B.id = A.column_id;
+
+RIGHT (OUTER) JOIN => SELECT FROM table1 AS A RIGHT JOIN table2 AS B ON B.id = A.column_id;
+
+INNER JOIN => SELECT FROM A,B WHERE |OR| => SELECT FROM table1 AS A INNER JOIN table2 AS B ON B.id = A.column_id;
+
+FULL OUTER JOIN (Return NULL when a match is not found) => 
+[   
+
+    FULL OUTER JOIN SYNTAX:
+
+    select * from apples as a
+    left outer join oranges as o on a.price = o.price
+    union all
+    select * from apples as a
+    right outer join oranges as o on a.price = o.price
+    where a.price is null;
+
+
+]
+UNION ALL (combines results of 2 or more SELECT statements) => 
+[   Syntax:
+
+    SELECT expression1, expression2, ... expression_n
+    FROM tables
+    [WHERE conditions]
+    UNION ALL
+    SELECT expression1, expression2, ... expression_n
+    FROM tables
+    [WHERE conditions];
+
+}
+
+
+[Should I use 'USING' or 'ON'?]
+[A: USING => both tables need to have columns with matching names
+
+    ON => both tables do not need to have columns with matching names
+]
+
+
+[
+    e.g.
+
+    ALTER TABLE `movies` CHANGE `id` `movie_id` INT( 11 ) NOT NULL AUTO_INCREMENT;
+
+    SELECT A.`title` , B.`first_name` , B.`last_name`
+    FROM `movies` AS A
+    LEFT JOIN `members` AS B
+    USING ( `movie_id` )
+
+]
+
+Cross join does not combine the rows, if you have 100 rows in each table with 1 to 1 match, you get 10.000 results, Innerjoin will only return 100 rows in the same situation.
+
+avoid cross-joins => e.g. SELECT * FROM authors, books || it looks messy |OR| => SELECT * FROM authors CROSS JOIN books
+
+implicit inner join => e.g. SELECT * FROM authors, books WHERE authors.id = books.author_id; || it looks much cleaner, organized
+
+ or => e.g. SELECT authors.id, CONCAT(F_name, ' ', l_name) AS full_name, books.title, books.release_date FROM authors, books WHERE authors.id = books.author_id ORDER BY books.title ASC, books.release_date ASC;

@@ -1,0 +1,133 @@
+# Data Types:
+
+TINYINT
+MEDIUM INT
+INT
+BIGINT
+FLOAT
+DOUBLE
+-------
+CHAR 
+VARCHAR
+BLOB
+TEXT
+TINYBLOB
+TINYTEXT
+MEDIUMBLOB
+MEDIUMTEXT
+LONGBLOB
+LONGTEXT
+ENUM
+-------
+DATE
+DATETIME
+TIMESTAMP
+TIME
+YEAR
+-------
+# Modifiers:
+
+NOT NULL
+UNIQUE
+PRIMARY KEY
+FOREIGN KEY
+CHECK
+DEFAULT
+INDEX
+UNSIGNED
+-------
+# Tables/Adding and Deleting:
+
+ALTER TABLE
+RENAME TO
+ADD
+DROP
+DROP TABLE
+(ADD TABLES DOESN'T EXIST, TO CREATE A NEW TABLE JUST DO => CREATE TABLE tableNAME(values);)
+-------
+# Operators:
+
+LIKE '%A%'
+AND
+OR
+WHERE
+BETWEEN
+IN
+NOT LIKE
+NOT IN
+
+SELECT
+  CASE
+    WHEN THEN
+    ELSE
+  FROM
+-------
+# CRUD:
+
+CREATE
+INSERT INTO tableName() Values();
+
+
+READ
+SELECT * FROM tableName;
+
+UPDATE
+UPDATE tableName
+SET column = newValue;
+WHERE id > 5 AND id < 8;
+
+DELETE
+DELETE FROM tableName WHERE id > 8 AND <= 10;
+
+-------
+# Other Modifiers:
+
+HAVING (use when using GROUP BY to filter group)
+
+% (use to match pattern or string)
+_ (used to fill in the blank)
+ESCAPE (use to not include a digit/character/etc.)
+
+-------
+# REGEXP:
+
+SELECT * FROM `movies` WHERE `title` REGEXP 'code';
+
+
+* (zero or more matches)
++ (one or more matches)
+? (zero or one preceding matches)
+. (matches exactly and matches anything that adds a single character)
+^ (beginning)
+[] (match anything in here)
+[^] (match anything but what's in here)
+[a-z] (any lowercase letter match)
+[A-Z] (any uppercase letter match)
+[0-9] (any digit match)
+| (OR)
+[:class:] (matches a character class)
+-------
+# Aggregate Functions:
+
+1) COUNT
+2) SUM
+3) AVG
+4) MIN
+5) MAX  
+-------
+# Function types:
+
+String, Numeric, Date, Aggregate
+-------
+# Difference between MODIFY and ALTER:
+
+MODIFY => change the column data type and its constraints
+ALTER => add changes to an existing table or database
+-------
+# INDEXING:
+
+-speeds up queries/faster CRUD
+
+CREATE INDEX id_index ON table_name(column_name);
+DROP INDEX id_index ON table_name(column_name);
+
